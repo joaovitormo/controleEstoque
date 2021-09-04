@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 import com.sun.istack.NotNull;
 
@@ -41,7 +43,9 @@ public class produtos {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
-
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -105,6 +109,7 @@ public class produtos {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
 	
 	
 	

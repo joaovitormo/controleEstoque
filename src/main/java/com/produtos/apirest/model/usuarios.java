@@ -1,9 +1,11 @@
 package com.produtos.apirest.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
@@ -29,6 +31,7 @@ public class usuarios {
 	
 	@NotNull
 	private String tipo;
+	
 
 	public Long getId() {
 		return id;
@@ -69,6 +72,7 @@ public class usuarios {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
 	
 	
 	
