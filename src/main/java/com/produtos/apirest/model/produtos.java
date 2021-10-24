@@ -7,12 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 
@@ -21,7 +21,7 @@ import com.sun.istack.NotNull;
 public class produtos {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotNull
@@ -37,14 +37,20 @@ public class produtos {
 	private Long quantidade;
 	
 	@NotNull
-	private Long valor;
+	private Float valor;
 	
 	private String foto;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private pedidos pedidos;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private fornecedores fornecedores;
 	
 	public Long getId() {
 		return id;
@@ -86,11 +92,12 @@ public class produtos {
 		this.quantidade = quantidade;
 	}
 
-	public Long getValor() {
+
+	public Float getValor() {
 		return valor;
 	}
 
-	public void setValor(Long valor) {
+	public void setValor(Float valor) {
 		this.valor = valor;
 	}
 

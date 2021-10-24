@@ -1,6 +1,6 @@
 package com.produtos.apirest.model;
 
-
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,44 +10,39 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
-@Table(name="tb_usuarios")
-public class usuarios {
-	
+@Table(name="tb_clientes")
+public class clientes {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	@NotNull
 	private String nome;
 	
-	@NotNull
-	@Email
 	private String email;
 	
-	@NotNull
-	private String senha;
+	private Long celular;
 	
-	@NotNull
-	private String tipo;
-	
-	
-	/*Cascade Type ALL ou REMOVE*/
-	@OneToMany(mappedBy = "usuarios", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("usuarios")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
+
+	@OneToMany(mappedBy = "clientes", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("clientes")
     private List<pedidos> pedido;
 	
-
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -67,20 +62,20 @@ public class usuarios {
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
+	public Long getCelular() {
+		return celular;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setCelular(Long celular) {
+		this.celular = celular;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public Date getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 	public List<pedidos> getPedido() {
@@ -90,9 +85,8 @@ public class usuarios {
 	public void setPedido(List<pedidos> pedido) {
 		this.pedido = pedido;
 	}
-
 	
 	
 	
-
+	
 }
