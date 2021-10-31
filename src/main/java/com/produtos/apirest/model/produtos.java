@@ -42,7 +42,7 @@ public class produtos {
 	private String foto;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date = new java.sql.Date(System.currentTimeMillis());
+	private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
 	
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
@@ -109,13 +109,30 @@ public class produtos {
 		this.foto = foto;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
+
+	public pedidos getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(pedidos pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public fornecedores getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(fornecedores fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+
 
 	
 	

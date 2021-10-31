@@ -20,7 +20,7 @@ import com.produtos.apirest.repository.produtosRepository;
 
 @RestController
 @RequestMapping("/produtos")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class produtosController {
 	
 	@Autowired
@@ -54,7 +54,7 @@ public class produtosController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtosRepository.save(produtos));
 	}
 	
-	@PutMapping("/{id]")
+	@PutMapping("/alterar")
 	public ResponseEntity<produtos> putProdutos (@RequestBody produtos produtos) {
 		return ResponseEntity.status(HttpStatus.OK).body(produtosRepository.save(produtos));
 	}
