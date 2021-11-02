@@ -22,8 +22,6 @@ public class pedidos {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
-	private String nome;
 	
 	private String formPag;
 	
@@ -54,13 +52,6 @@ public class pedidos {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getFormPag() {
 		return formPag;

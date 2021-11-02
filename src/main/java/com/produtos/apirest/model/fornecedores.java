@@ -22,13 +22,15 @@ public class fornecedores {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	@NotNull
 	private String nome;
 	
+	@NotNull
 	private String email;
 	
+	@NotNull
 	private Long celular;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -37,12 +39,12 @@ public class fornecedores {
 	@OneToMany(mappedBy = "fornecedores", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("fornecedores")
     private List<produtos> produto;
-
-	public Long getId() {
+	
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -85,8 +87,10 @@ public class fornecedores {
 	public void setProduto(List<produtos> produto) {
 		this.produto = produto;
 	}
-    
-    
-    
-    
+
+
+	
+	
+	
+	
 }
