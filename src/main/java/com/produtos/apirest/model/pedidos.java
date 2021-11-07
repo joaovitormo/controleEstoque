@@ -1,12 +1,15 @@
 package com.produtos.apirest.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,10 +35,12 @@ public class pedidos {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCompra = new java.sql.Date(System.currentTimeMillis());
 	
-	@ManyToOne
-	@JsonIgnoreProperties("pedidos")
-	private produtos produtos;
 	
+	@OneToMany(mappedBy = "pedidos", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("pedidos")
+    private List<produtos> produto;
+    
+    
 	@ManyToOne
 	@JsonIgnoreProperties("pedidos")
 	private usuarios usuarios;
@@ -85,12 +90,13 @@ public class pedidos {
 		this.dataCompra = dataCompra;
 	}
 
-	public produtos getProdutos() {
-		return produtos;
+	
+	public List<produtos> getProduto() {
+		return produto;
 	}
 
-	public void setProdutos(produtos produtos) {
-		this.produtos = produtos;
+	public void setProduto(List<produtos> produto) {
+		this.produto = produto;
 	}
 
 	public usuarios getUsuarios() {

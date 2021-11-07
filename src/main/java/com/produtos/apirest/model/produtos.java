@@ -52,6 +52,7 @@ public class produtos {
 	@JsonIgnoreProperties("produtos")
 	private fornecedores fornecedores;
 	
+	
 	public Long getId() {
 		return id;
 	}
